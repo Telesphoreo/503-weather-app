@@ -15,7 +15,6 @@ def get_weather(city):
     }
     response = requests.get(url, params=params)
     data = response.json()
-    print(data)
     if data["cod"] != 200:
         if data["message"] == "city not found":
             print("City not found. Make sure you typed it in correctly.\n")
