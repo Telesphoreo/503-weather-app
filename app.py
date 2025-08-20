@@ -16,8 +16,8 @@ def get_weather(city):
     response = requests.get(url, params=params)
     data = response.json()
     if data["cod"] != 200:
-        if data["message"] == "Nothing to geocode":
-            return "You didn't enter a city. Please try again."
+        if data["message"] == "city not found":
+            return "City not found. Make sure you typed it in correctly."
         return None
     else:
         city_name = data["name"]
@@ -36,7 +36,7 @@ def main():
             st.warning("Please enter a city.")
         else:
             result = get_weather(city)
-            if result.__contains__("Please try again."):
+            if result.__contains__("City not found"):
                 st.error(result)
             else:
                 st.success(result)
