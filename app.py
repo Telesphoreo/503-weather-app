@@ -36,7 +36,7 @@ def main():
             st.warning("Please enter a city.")
         else:
             result = get_weather(city)
-            if result.__contains__("City not found"):
+            if result.__contains__("City not found") or result is None:
                 st.error(result)
             else:
                 st.success(result)
